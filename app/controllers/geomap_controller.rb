@@ -5,4 +5,7 @@ class GeomapController < ApplicationController
   		marker.lng user.longitude
 	end
   end
+
+  def directions
+  end
 end

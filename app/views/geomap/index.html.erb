@@ -2,10 +2,14 @@
 <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
 <h1>Geomap</h1>
 
+<h2>Current Location</h2>
+
+<!-- Display Map -->
 <div style='width: 800px;'>
   <div id="geolocation" style='width: 800px; height: 400px;'></div>
 </div>
 
+<!-- This is the script that give us the current location -->
 <script type="text/javascript">
 	var handler = Gmaps.build('Google');
 handler.buildMap({ internal: {id: 'geolocation'} }, function(){
@@ -13,7 +17,6 @@ handler.buildMap({ internal: {id: 'geolocation'} }, function(){
   if(navigator.geolocation)
     navigator.geolocation.getCurrentPosition(displayOnMap);
 });
-
 function displayOnMap(position){
   var marker = handler.addMarker({
     lat: position.coords.latitude,
@@ -22,8 +25,13 @@ function displayOnMap(position){
   handler.map.centerOn(marker);
 };
 </script>
+
+
+
 <script>
     markers = handler.addMarkers(<%=raw @hash.to_json %>);
 </script>
 
 
+<br />
+<%= link_to 'Get Directions', geomap_directions_path %>
