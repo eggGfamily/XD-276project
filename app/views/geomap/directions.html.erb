@@ -6,20 +6,36 @@
 <div style='width: 800px;'>
     <div id="directions" style='width: 800px; height: 400px;'></div>
 </div>
+<p id="test">blah</p>
 
 <!-- This script gives us directions, the origin and destination is hard coded currently but I think we can get the lat and long from the yelp API -->
+
 <script type="text/javascript">
 var directionsDisplay = new google.maps.DirectionsRenderer();
 var directionsService = new google.maps.DirectionsService();
+var x = document.getElementById("test");
+var lat;
+var long;
 
-function calcRoute() {
-  var origin      = new google.maps.LatLng(41.850033, -87.6500523);
-  var destination = new google.maps.LatLng(42.850033, -85.6500523);
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(calcRoute);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+
+function calcRoute(position) {
+  var origin      = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+  var destination = new google.maps.LatLng(49.264187, -122.886235);
+
   var request = {
       origin:      origin,
       destination: destination,
       travelMode:  google.maps.TravelMode.DRIVING
   };
+
   directionsService.route(request, function(response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
       directionsDisplay.setDirections(response);
@@ -27,14 +43,13 @@ function calcRoute() {
   });
 }
 
-calcRoute();
+getLocation();
 
 var handler = Gmaps.build('Google');
 handler.buildMap({ internal: {id: 'directions'}}, function(){
   directionsDisplay.setMap(handler.getMap());
 });
 </script>
-
 
 
 <script>
