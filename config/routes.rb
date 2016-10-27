@@ -1,19 +1,21 @@
 Rails.application.routes.draw do
-  get 'user/index'
+  # get 'user/index'
 
-  get 'user/show'
+  # get 'user/show'
 
-  get 'user/new'
+  # get 'user/new'
 
-  get 'user/create'
+  # get 'user/create'
 
-  get 'user/edit'
+  # get 'user/edit'
 
-  get 'user/update'
+  # get 'user/update'
 
-  get 'user/delete'
+  # get 'user/delete'
 
-  get 'user/destroy'
+  # get 'user/destroy'
+  resources :user
+  get 'user/login'
 
   get 'geomap/index'
   get 'geomap/directions'
