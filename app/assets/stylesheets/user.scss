@@ -1,6 +1,8 @@
 // Place all the styles related to the User controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
 /* sidebar */
 
 aside {
@@ -37,3 +39,17 @@ aside {
 .gravatar_edit {
   margin-top: 15px;
 }
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+//   @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
