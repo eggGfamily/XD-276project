@@ -14,12 +14,12 @@ Rails.application.routes.draw do
   # get 'user/delete'
 
   # get 'user/destroy'
-  resources :user
-  get 'user/login'
+  resources :users
+  get 'users/login'
 
-  get 'geomap/index'
-  get 'geomap/directions'
-  root 'geomap#index'
+  get 'geomaps/index'
+  get 'geomaps/directions'
+  root 'geomaps#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
