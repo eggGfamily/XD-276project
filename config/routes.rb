@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   # get 'user/index'
 
   # get 'user/show'
@@ -15,9 +17,11 @@ Rails.application.routes.draw do
 
   # get 'user/destroy'
   resources :users
-  get 'users/login'
   get  '/signup',  to: 'users#new'
-
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
+  
   get 'geomaps/index'
   get 'geomaps/directions'
   root 'geomaps#index'
