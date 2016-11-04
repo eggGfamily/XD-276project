@@ -31,6 +31,15 @@ aside {
   }
 }
 
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
 .gravatar {
   float: left;
   margin-right: 10px;
@@ -51,4 +60,3 @@ input, textarea, select, .uneditable-input {
 input {
   height: auto !important;
 }
-
